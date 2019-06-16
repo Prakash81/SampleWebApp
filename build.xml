@@ -18,12 +18,12 @@
 	   </javac>
 	</target>
 	<target name="checkstyle">
-	   <checkstyle config="sun_checks.xml">
+	   <checkstyle config="sun_checks.xml" failOnViolation="false">
 	      <fileset dir="src/example" includes="**/*.java"/>
 		  <formatter type="xml" toFile="checkstyle_errors.xml"/>
 	   </checkstyle>
 	</target>
-	<target name="junit">
+	<target name="junit" depends="compile">
 	  <junit printsummary="yes" haltonfailure="yes">
         <classpath>
          <pathelement location="build/classes"/>
@@ -33,7 +33,7 @@
 
       
 
-        <test name="junit.TestCalculator" haltonfailure="no" outfile="TestCalculator_junitResult.txt">
+        <test name="junit.TestCalculator" haltonfailure="no" outfile="TestCalculator_junitResult">
         <formatter type="xml"/>
         </test>
 	  </junit>
